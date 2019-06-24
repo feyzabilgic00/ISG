@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                >
+    <h:form id="firma-table">
+        <div class="row">
+            <div class="col-md-9">
+                <h:inputText class="form-control"  value="#{kullaniciBEAN.arama}" />
+            </div>
+            <div class="col-md-3">
+                <h:commandButton value="Ara" class="btn btn-warning" action="#{kullaniciBEAN.ara}" >
+                    <f:ajax render="firma-table" execute="firma-table" />
+                </h:commandButton>
+            </div>
+        </div>
+        <h:dataTable style="font-size: xx-small;" class="table table-striped table-hover" value="#{kullaniciBEAN.kullanicilist}" var="kul">
+            <h:column>
+                <f:facet name="header">SICIL NO</f:facet>
+                    #{kul.sicilno}
+            </h:column>
+            <h:column>
+                <f:facet name="header">GOREV TANIMI</f:facet>
+                <h:commandLink action="#{kullaniciBEAN.updateForm(kul)}" value="#{kul.gorevtanim}">
+                    <f:ajax execute="@this" render="firmagruplari-form"/>
+                </h:commandLink>
+            </h:column>
+            <h:column>
+                <f:facet name="header">TC</f:facet>
+                    #{kul.tc}
+            </h:column>
+            <h:column>
+                <f:facet name="header">AD</f:facet>
+                    #{kul.ad}
+            </h:column>
+            <h:column>
+                <f:facet name="header">SOYAD</f:facet>
+                    #{kul.soyad}
+            </h:column>
+            <h:column>
+                <f:facet name="header">DURUM</f:facet>
+                    #{kul.durum}
+            </h:column>
+            <h:column>
+                <f:facet name="header">BOY</f:facet>
+                    #{kul.boy}
+            </h:column>
+            <h:column>
+                <f:facet name="header">KILO</f:facet>
+                    #{kul.kilo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">KAN GRUBU</f:facet>
+                    #{kul.kangrup}
+            </h:column>
+            <h:column>
+                <f:facet name="header">CINSIYET</f:facet>
+                    #{kul.cinsiyet}
+            </h:column>
+            <h:column>
+                <f:facet name="header">DOGUM TARIHI</f:facet>
+                    #{kul.dogumtarih}
+            </h:column>   
+            <h:column>
+                <f:facet name="header">DOGUM YER</f:facet>
+                    #{kul.dogumyer}
+            </h:column>
+            <h:column>
+                <f:facet name="header">STATU</f:facet>
+                    #{kul.statü}
+            </h:column>
+            <h:column>
+                <f:facet name="header">OGRENIM DURUMU</f:facet>
+                    #{kul.ogrenimdurum}
+            </h:column>
+            <h:column>
+                <f:facet name="header">iS KURUL GOREV</f:facet>
+                    #{kul.isgkurulgorev}
+            </h:column>
+            <h:column>
+                <f:facet name="header">ISE BASLANGIC TARIHI</f:facet>
+                    #{kul.isebaslangictarih}
+            </h:column>
+            <h:column>
+                <h:commandButton styleClass="btn btn-sm btn-danger" action="#{kullaniciBEAN.delete(kul)}" value="Delete"> 
+                <f:ajax execute="@this" render="firma-table"></f:ajax>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>  
+    </h:form>
+</ui:composition>

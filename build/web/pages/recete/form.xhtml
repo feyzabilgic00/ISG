@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                >
+    <h:form id="recete-form">
+                        <div class="form-group">
+                            <h:inputHidden value="#{receteBEAN.recete.rid}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Muayene ID:</label>
+                            <h:inputText  styleClass="form-control" value="#{receteBEAN.recete.mid}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Recete Tarihi:</label>
+                            <h:inputText  styleClass="form-control" value="#{receteBEAN.recete.rtarihi}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Recete Tipi:</label>
+                            <h:inputText  styleClass="form-control" value="#{receteBEAN.recete.rtipi}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Recete Alt Tipi:</label>
+                            <h:inputText  styleClass="form-control" value="#{receteBEAN.recete.ralttipi}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Provizyon Tipi:</label>
+                            <h:inputText  styleClass="form-control" value="#{receteBEAN.recete.provizyontipi}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Seri No:</label>
+                            <h:inputText  styleClass="form-control" value="#{receteBEAN.recete.serino}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectedMNedeni">Muayene Nedeni</label>
+                            <h:selectOneMenu styleClass="custom-select" id="selectedMNedeni" value="#{receteBEAN.rct.muayene}">
+                                <f:selectItems value="#{receteBEAN.mlist}" var="muayene" itemValue="#{muayene}" itemLabel="#{muayene.mneden}"/>
+                                </h:selectOneMenu> 
+                        </div>
+                        <div class="form-group">
+                            <h:commandButton rendered="#{receteBEAN.recete.rid!=0}" styleClass="btn btn-info" value="Update" action="#{receteBEAN.update}"/>
+                            <h:commandButton rendered="#{receteBEAN.recete.rid==0}" styleClass="btn btn-primary" value="Create" action="#{receteBEAN.create}"/>
+                            <h:commandButton  rendered="#{receteBEAN.recete.rid!=0}" styleClass="btn btn-secondary" value="Clear Form" action="#{receteBEAN.clearForm()}"/>
+                        </div>
+                    </h:form>
+</ui:composition>

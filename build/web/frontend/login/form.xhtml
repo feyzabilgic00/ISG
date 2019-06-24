@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <p/>
+    <div class="row">
+        <div class="col-md-4">
+            <h:form>
+                <div class="form-group">
+                    <label for="inputUserAdi"> KULLANICI ADI </label>
+                    <h:inputText id="inputUserAdi" value ="#{sessionController.user.email}" styleClass="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="inputSifre"> ŞİFRE </label>
+                    <h:inputSecret id="inputSifre" value ="#{sessionController.user.sifre}" styleClass="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <h:commandButton action="#{sessionController.login()}" value="Login" styleClass="btn btn-outline-dark"/> 
+                </div>
+            </h:form>
+        </div>
+    </div>
+</ui:composition>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/js/bootstrap.js" type="text/javascript"></script>
+        <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h:form>
+                silmek istediğinizden eminmisiniz?
+                <pre>
+                <b>firm id : </b>#{firmaBEAN.firma.firmaid}<br />
+                <b>firm unvan : </b>#{firmaBEAN.firma.funvan}<br />
+                <b>isveren adı soyadı : </b>#{firmaBEAN.firma.isvrnadsoyad}<br />
+                <b>isveren gsm : </b>#{firmaBEAN.firma.isvrngsm}<br />
+                <b>firm telefon : </b>#{firmaBEAN.firma.firmatlfn}<br />
+                <b>faks : </b>#{firmaBEAN.firma.faks}<br />
+                <b>firm mail : </b>#{firmaBEAN.firma.firmamail}<br />
+                <b>il : </b>#{firmaBEAN.firma.il}<br />
+                <b>ilce : </b>#{firmaBEAN.firma.ilce}<br />
+                <b>adres : </b>#{firmaBEAN.firma.adres}<br />
+                <b>faaliyet alanı : </b>#{firmaBEAN.firma.faaliyetalan}<br />
+                <b>sgk sicil : </b>#{firmaBEAN.firma.sgksicil}<br />
+                <b>tehlike sınıfı : </b>#{firmaBEAN.firma.tehlikesinif}<br />
+                <b>grup şirket : </b>#{firmaBEAN.firma.grupsirket}<br />
+                <b>durum : </b>#{firmaBEAN.firma.durum}<br />
+                <b>grup id : </b>#{firmaBEAN.firma.grup_id}<br />
+                </pre>
+                <div class="btn-group">
+                <h:commandButton styleClass="btn btn-dark" action="firma.xhtml" value="Cancel"/>
+                <h:commandButton styleClass="btn btn-danger" action="#{firmaBEAN.delete}" value="Sil"/>
+                </div>
+            </h:form>   
+        </div>
+    </h:body>
+</html>
+

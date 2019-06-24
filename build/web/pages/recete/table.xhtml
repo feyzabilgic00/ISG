@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                >
+    <h:form id="firma-table">
+        <div class="row">
+            <div class="col-md-9">
+                <h:inputText class="form-control"  value="#{receteBEAN.arama}" />
+            </div>
+            <div class="col-md-3">
+                <h:commandButton value="Ara" class="btn btn-warning" action="#{receteBEAN.ara}" >
+                    <f:ajax render="firma-table" execute="firma-table" />
+                </h:commandButton>
+            </div>
+        </div>
+        <h:dataTable style="font-size: xx-small;" class="table table-striped table-hover" value="#{receteBEAN.recetelist}" var="prs">
+            <h:column>
+                <f:facet name="header">RECETE ID</f:facet>
+                    #{prs.rid}
+            </h:column>
+            <h:column>
+                <f:facet name="header">MUAYENE ID</f:facet>
+                    #{prs.muayene.mid}
+            </h:column>
+            <h:column>
+                <f:facet name="header">RECETE TARIHI</f:facet>
+                    #{prs.rtarihi}
+            </h:column>
+            <h:column>
+                <f:facet name="header">RECETE TİPİ</f:facet>
+                <h:commandLink action="#{receteBEAN.updateForm(prs)}" value="#{prs.rtipi}">
+                    <f:ajax execute="@this" render="recete-form"/>
+                </h:commandLink>
+            </h:column>
+            <h:column>
+                <f:facet name="header">RECETE ALT TIPI</f:facet>
+                    #{prs.ralttipi}
+            </h:column>
+            <h:column>
+                <f:facet name="header">PROVIZYON TIPI</f:facet>
+                    #{prs.provizyontipi}
+            </h:column>
+            <h:column>
+                <f:facet name="header">SERI NO</f:facet>
+                    #{prs.serino}
+            </h:column>
+            <h:column>
+                <h:commandButton styleClass="btn btn-sm btn-danger" action="#{receteBEAN.delete(prs)}" value="Delete">
+                     <f:ajax execute="@this" render="firma-table"></f:ajax>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>  
+    </h:form>
+</ui:composition>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              template="/frontend/template/layout.xhtml"  >
+
+    <ui:define name="content">
+        <h:form id="firma-table">
+        <div class="row">
+            <div class="col-md-9">
+                <h:inputText class="form-control"  value="#{personelBEAN.arama}" />
+            </div>
+            <div class="col-md-3">
+                <h:commandButton value="Ara" class="btn btn-warning" action="#{personelBEAN.ara}" >
+                    <f:ajax render="firma-table" execute="firma-table" />
+                </h:commandButton>
+            </div>
+        </div>
+        <h:dataTable style="font-size: xx-small;" class="table table-striped table-hover" value="#{personelBEAN.personellist}" var="prs">
+            <h:column>
+                <f:facet name="header">SICIL NO</f:facet>
+                    #{prs.sicilnop}
+            </h:column>
+            <h:column>
+                <f:facet name="header">ADI</f:facet>
+                <h:commandLink action="#{personelBEAN.updateForm(prs)}" value="#{prs.ad}"/>
+
+            </h:column>
+            <h:column>
+                <f:facet name="header">SOYADI</f:facet>
+                    #{prs.soyad}
+            </h:column>
+            <h:column>
+                <f:facet name="header">UNVAN</f:facet>
+                    #{prs.unvan}
+            </h:column>
+            <h:column>
+                <f:facet name="header">OGRENİM DURUMU</f:facet>
+                    #{prs.ogrenimdurum}
+            </h:column>
+            <h:column>
+                <f:facet name="header">CINSIYET</f:facet>
+                    #{prs.cinsiyet}
+            </h:column>
+            <h:column>
+                <f:facet name="header">BOY</f:facet>
+                    #{prs.boy}
+            </h:column>
+            <h:column>
+                <f:facet name="header">KILO</f:facet>
+                    #{prs.kilo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">ISE GIRIS TARIHI</f:facet>
+                    #{prs.isegiristrh}
+            </h:column>
+            <h:column>
+                <f:facet name="header">DOGUM TARIHI</f:facet>
+                    #{prs.dogumtarih}
+            </h:column>
+            <h:column>
+                <f:facet name="header">DOGUM YERI</f:facet>
+                    #{prs.dogumyer}
+            </h:column>   
+            <h:column>
+                <f:facet name="header">FIRMA ID</f:facet>
+                    #{prs.firma.firmaid}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Resim</f:facet>
+
+                <h:graphicImage style="width: 150px; height: 200px" value="/dosyalar/#{prs.cv}" />
+            </h:column>
+            <h:column>
+                <h:commandButton styleClass="btn btn-sm btn-danger" action="#{personelBEAN.delete(prs)}" value="Delete"/> 
+            </h:column>
+        </h:dataTable>  
+    </h:form>
+        
+    </ui:define>
+</ui:composition>

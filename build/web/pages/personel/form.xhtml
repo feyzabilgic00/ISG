@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                >
+    <h:form id="personel-form" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="inputName">Sicil No:</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.sicilnop}"/>
+            <label for="inputName">Ad:</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.ad}"/>
+            <label for="inputName">Soyad:</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.soyad}"/>
+            <label for="inputName">Unvan:</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.unvan}"/>
+            <label for="inputName">Ogrenim Durumu:</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.ogrenimdurum}"/>
+            <label for="inputName">Cinsiyet</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.cinsiyet}"/>
+            <label for="inputName">Boy:</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.boy}"/>
+            <label for="inputName">Kilo:</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.kilo}"/>
+            <label for="inputName">İşe Giriş Tarihi:</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.isegiristrh}"/>
+            <label for="inputName">Dogum Tarihi:</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.dogumtarih}"/>
+            <label for="inputName">Dogum Yeri:</label>
+            <h:inputText  styleClass="form-control" value="#{personelBEAN.personel.dogumyer}"/>
+            <label for="inputName">CV Dosyası:</label>
+            <h:inputFile  styleClass="form-control" value="#{personelBEAN.dosya}"/>
+            <label for="inputName">Firma Id:</label>
+            <h:selectOneMenu  styleClass="form-control" value="#{personelBEAN.personel.firmaid}">
+                <f:selectItems value="#{firmaIliskiBEAN.firmalar}" />
+            </h:selectOneMenu>
+        </div>
+        <div class="form-group">
+            <h:commandButton rendered="#{personelBEAN.personel.sicilnop!=0}" styleClass="btn btn-info" value="Update" action="#{personelBEAN.update}"/>
+            <h:commandButton rendered="#{personelBEAN.personel.sicilnop==0}" styleClass="btn btn-primary" value="Create" action="#{personelBEAN.create}"/>
+            <h:commandButton  rendered="#{personelBEAN.personel.sicilnop!=0}" styleClass="btn btn-secondary" value="Clear Form" action="#{personelBEAN.clearForm()}"/>
+        </div>
+    </h:form>
+</ui:composition>
